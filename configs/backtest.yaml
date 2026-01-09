@@ -1,0 +1,56 @@
+# Backtesting Configuration
+backtest:
+  # Portfolio settings
+  portfolio:
+    initial_capital: 100000.0
+    max_position_size: 1.0
+    rebalance_frequency: "D"
+  
+  # Transaction costs
+  costs:
+    transaction_cost: 0.001  # 0.1% per trade
+    slippage: 0.0005  # 0.05% slippage
+    borrow_cost: 0.0001  # 0.01% daily borrow cost for shorts
+  
+  # Risk management
+  risk:
+    max_drawdown: 0.2  # 20% maximum drawdown
+    position_sizing: "fixed"  # "fixed", "kelly", "volatility_target"
+    volatility_target: 0.15  # 15% target volatility
+  
+  # Walk-forward validation
+  walk_forward:
+    train_window: 252  # 1 year
+    test_window: 63    # 3 months
+    step_size: 21      # 1 month
+  
+  # Benchmark
+  benchmark:
+    symbol: "SPY"  # S&P 500 ETF
+    enabled: true
+  
+  # Evaluation metrics
+  metrics:
+    financial:
+      - "total_return"
+      - "annualized_return"
+      - "volatility"
+      - "sharpe_ratio"
+      - "max_drawdown"
+      - "calmar_ratio"
+      - "hit_rate"
+      - "avg_trade_return"
+    
+    classification:
+      - "accuracy"
+      - "precision"
+      - "recall"
+      - "f1"
+      - "auc"
+      - "average_precision"
+    
+    bubble_specific:
+      - "bubble_detection_frequency"
+      - "avg_bubble_duration"
+      - "avg_bubble_return"
+      - "max_bubble_return"

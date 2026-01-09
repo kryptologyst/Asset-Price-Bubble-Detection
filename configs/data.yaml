@@ -1,0 +1,31 @@
+# Data Configuration
+data:
+  # Data sources
+  sources:
+    yahoo_finance:
+      enabled: true
+      symbols: ["AAPL", "MSFT", "GOOGL", "TSLA", "NVDA"]
+      period: "5y"
+      interval: "1d"
+    
+    synthetic:
+      enabled: true
+      n_days: 1000
+      initial_price: 100.0
+      drift: 0.0005
+      volatility: 0.02
+      bubble_probability: 0.1
+      bubble_magnitude: 0.3
+  
+  # Data processing
+  processing:
+    cache_data: true
+    data_dir: "data"
+    resample_frequency: null  # null for no resampling
+    
+  # Validation
+  validation:
+    check_ohlc_consistency: true
+    check_missing_values: true
+    check_negative_prices: true
+    min_data_points: 100
